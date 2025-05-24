@@ -1,0 +1,21 @@
+{
+    "name": "MehulK/query-optimizer",
+    "description": "Intelligent Query Caching and Optimization for Laravel",
+    "type": "library",
+    "require": {
+        "php": ">=8.0",
+        "illuminate/support": "^9.0|^10.0|^11.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "MehulK\\QueryOptimizer\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "MehulK\\QueryOptimizer\\QueryOptimizerServiceProvider"
+            ]
+        }
+    }
+}
