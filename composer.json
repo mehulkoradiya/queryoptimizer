@@ -1,5 +1,5 @@
 {
-    "name": "MehulK/query-optimizer",
+    "name": "mehulk/query-optimizer",
     "description": "Intelligent Query Caching and Optimization for Laravel",
     "type": "library",
     "require": {

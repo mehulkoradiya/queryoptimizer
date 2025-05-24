@@ -7,19 +7,27 @@ class QueryOptimizerServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/queryoptimizer.php', 'queryoptimizer');
+        $this->mergeConfigFrom(
+            __DIR__.'/../config/queryoptimizer.php', 'queryoptimizer'
+        );
+
+        $this->app->singleton('query-optimizer', function ($app) {
+            return new QueryOptimizer($app['config']->get('queryoptimizer'));
+        });
+
+        $this->app->alias('query-optimizer', QueryOptimizer::class);
     }
 
     public function boot()
     {
-        $this->publishes([
-            __DIR__.'/../config/queryoptimizer.php' => config_path('queryoptimizer.php'),
-        ], 'config');
-
         if ($this->app->runningInConsole()) {
+            $this->publishes([
+                __DIR__.'/../config/queryoptimizer.php' => config_path('queryoptimizer.php'),
+            ], 'config');
+
             $this->commands([
-                Commands\AnalyzeQueries::class,
-                Commands\ClearCache::class,
+                Commands\AnalyzeCommand::class,
+                Commands\ClearCacheCommand::class,
             ]);
         }
 
