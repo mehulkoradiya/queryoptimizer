@@ -4,11 +4,24 @@
     "type": "library",
     "require": {
         "php": ">=8.0",
-        "illuminate/support": "^9.0|^10.0|^11.0"
+        "illuminate/support": "^9.0|^10.0|^11.0",
+        "illuminate/cache": "^9.0|^10.0|^11.0",
+        "illuminate/database": "^9.0|^10.0|^11.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^7.0|^8.0",
+        "phpunit/phpunit": "^9.5|^10.0",
+        "mockery/mockery": "^1.4",
+        "phpstan/phpstan": "^1.9"
     },
     "autoload": {
         "psr-4": {
             "MehulK\\QueryOptimizer\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "MehulK\\QueryOptimizer\\Tests\\": "tests/"
         }
     },
     "extra": {
@@ -17,5 +30,14 @@
                 "MehulK\\QueryOptimizer\\QueryOptimizerServiceProvider"
             ]
         }
-    }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "phpstan": "phpstan analyse"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
